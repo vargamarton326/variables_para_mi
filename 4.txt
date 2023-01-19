@@ -1,0 +1,104 @@
+en
+conf t
+hostname Sw1
+enable secret class
+no ip domain-lookup
+line con 0
+password JELSZO
+login
+interface vlan 1
+ip address 172.20.10.2 255.255.255.128
+no shut
+ex
+line con 0
+password cisco
+login
+exit
+line vty 0 4
+password cisco
+login
+ex
+service password-encryption
+banner motd #Unauthorized access is strictly prohibited.#
+
+copy ru st
+.........................................................
+en
+conf t
+hostname Sw2
+enable secret class
+no ip domain-lookup
+line con 0
+password JELSZO
+login
+interface vlan 2
+ip address 172.20.10.130 255.255.255.192
+no shut
+ex
+line con 0
+password cisco
+login
+exit
+line vty 0 4
+password cisco
+login
+ex
+service password-encryption
+banner motd #Unauthorized access is strictly prohibited.#
+
+copy ru st
+.........................................................
+en
+conf t
+hostname Sw3
+enable secret class
+no ip domain-lookup
+line con 0
+password JELSZO
+login
+interface vlan 3
+ip address 172.20.10.194 255.255.255.192
+no shut
+ex
+line con 0
+password cisco
+login
+exit
+line vty 0 4
+password cisco
+login
+ex
+service password-encryption
+banner motd #Unauthorized access is strictly prohibited.#
+
+copy ru st
+.........................................................
+en
+conf t
+hostname R1
+
+enable secret JELSZO
+
+line con 0
+password JELSZO
+login
+ex
+
+service password-encryption
+
+banner motd #Banner szoveg#
+
+int g0/0
+ip add 172.20.10.1 255.255.255.128
+no sh
+ex
+int g0/1
+ip add 172.20.10.129 255.255.255.192
+no sh
+ex
+int g0/2
+ip add 172.20.10.193 255.255.255.192
+no sh
+ex
+
+copy ru st

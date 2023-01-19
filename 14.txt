@@ -1,0 +1,45 @@
+ALAPKONFIG:
+pt, jegyzet kell:
+.........................
+en
+conf t
+hostname S1
+
+enable secret JELSZO
+
+line con 0
+password JELSZO
+login
+ex
+
+service password-encryption
+
+banner motd #Banner szoveg#
+
+copy ru st
+
+-------------------
+ALAPKONFIG:
+pt, jegyzet kell:
+.........................
+en
+conf t
+hostname S1
+
+enable secret JELSZO
+
+line con 0
+password JELSZO
+login
+ex
+
+service password-encryption
+
+banner motd #Banner szoveg#
+
+int g0/0
+ip add 192.168.0.1 255.255.255.0
+no sh
+ex
+
+copy ru st

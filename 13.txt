@@ -1,0 +1,77 @@
+ALAPKONFIG:
+pt, jegyzet kell:
+.........................
+en
+conf t
+hostname S1
+
+enable secret JELSZO
+
+line con 0
+password JELSZO
+login
+ex
+
+service password-encryption
+
+banner motd #Banner szoveg#
+
+copy ru st
+
+-------------------
+ALAPKONFIG:
+pt, jegyzet kell:
+.........................
+en
+conf t
+hostname S1
+
+enable secret JELSZO
+
+line con 0
+password JELSZO
+login
+ex
+
+service password-encryption
+
+banner motd #Banner szoveg#
+
+int g0/0
+ip add 192.168.0.1 255.255.255.0
+no sh
+ex
+
+copy ru st
+................................
+en
+conf t
+hostname S1
+enable secret JELSZO
+line con 0
+password JELSZO
+login
+service password-encryption
+ex
+int vlan1
+ip add 192.168.0.254 255.255.255.0
+ip default-gateway 192.168.0.1
+int vlan1
+no sh
+banner motd #Banner szoveg#
+copy ru st
+0000000000000000000000000000000000000
+PC TELNET:
+telnet 192.168.0.254
+JSZ--> JELSZO
+000000000000000DHCP0000000000000000000000
+ip dhcp pool PetrikVlan1
+network 192.168.0.0 255.255.255.0
+default-router 192.168.0.1
+dns-server 8.8.8.8
+lease 1 12 30
+domain-name google.com
+ip dhcp excluded-address 192.168.0.1 192.168.0.10
+ex
+int g0/1
+ip helper-address 192.168.0.2

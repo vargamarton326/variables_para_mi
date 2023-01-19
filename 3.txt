@@ -1,0 +1,51 @@
+en
+conf t
+hostname Room-145
+enable secret class
+no ip domain-lookup
+line con 0
+password R4Xe3
+login
+interface vlan 1
+ip address 10.10.10.100 255.255.255.0
+no shut
+ex
+line con 0
+password R4Xe3
+login
+exit
+line vty 0 4
+password R4Xe3
+login
+ex
+service password-encryption
+banner motd #Warning#
+
+copy ru st
+
+------------------------------------
+
+en
+conf t
+hostname Room-146
+enable secret class
+no ip domain-lookup
+line con 0
+password R4Xe3
+login
+interface vlan 1
+ip address 10.10.10.150 255.255.255.0
+no shut
+ex
+line con 0
+password R4Xe3
+login
+exit
+line vty 0 4
+password R4Xe3
+login
+ex
+service password-encryption
+banner motd #Warning#
+
+copy ru st

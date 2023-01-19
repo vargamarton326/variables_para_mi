@@ -1,0 +1,29 @@
+en
+conf t
+hostname Sw1
+enable secret class
+no ip domain-lookup
+line con 0
+password JELSZO
+login
+interface vlan 1
+ip address 172.20.10.2 255.255.255.128
+no shut
+ex
+line con 0
+password cisco
+login
+exit
+line vty 0 4
+password cisco
+login
+ex
+service password-encryption
+banner motd #Unauthorized access is strictly prohibited.#
+
+copy ru st
+
+
+---------------------------------------------------------
+PC-N CMD:telnet 172.20.10.2
+PW:cisco

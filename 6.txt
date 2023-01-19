@@ -1,0 +1,42 @@
+en
+conf t
+hostname Petrik
+enable secret JELSZO
+line con 0
+password JELSZO
+login
+ex
+service password-encryption
+banner motd # VEDETT ESZKOZ!!!#
+int g0/0
+ip add 192.168.0.1 255.255.255.0
+no sh
+ex
+int g0/1
+ip add 192.168.1.1 255.255.255.0
+no sh
+ex
+ip dhcp pool PetrikVlan1
+network 192.168.0.0 255.255.255.0
+default-router 192.168.0.1
+dns-server 8.8.8.8
+lease 1 12 30
+domain-name google.com
+ip dhcp excluded-address 192.168.0.1 192.168.0.10
+ex
+ip dhcp pool PetrikVlan2
+network 192.168.1.0 255.255.255.0
+default-router 192.168.1.1
+dns-server 8.8.8.8
+lease 1 12 30
+domain-name google.com
+ip dhcp excluded-address 192.168.1.1 192.168.1.10
+copy ru st
+
+int g0/1
+ip helper-address 192.168.1.2
+int g0/0
+no ip helper-address 192.168.1.2
+
+int range fa0/1-24
+sh

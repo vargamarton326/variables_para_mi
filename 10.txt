@@ -1,0 +1,45 @@
+ena 
+conf t
+hostname R1
+line con 0 --- első belépőszíntű consoljelszó conf t-hez
+pass cisco
+login --- ha line - nal kezdődik mindig kell
+enable secret cisco --- enable szint jelszava
+line vty 0 15 --- ha nem fogadja el  0 4 próba
+pass cisco
+login
+service password-encryption --- titkosítás
+banner motd"Vedett halozat!" --- ha van motd minden belépésnél kiírja, ha nincs, napi1x
+int 0/0
+ip add 192.168.0.1 255.255.255.0
+no sh
+exit
+ip domain-name cisco.com
+crypto key generate rsa
+
+?-->1024
+enter
+
+user
+username admin privilege lev
+username admin privilege 15 secret cisco
+line vt 0 15
+transport input ssh
+privilage level 15
+login local
+---------------------------------------------------------------------------------
+ena 
+conf t
+hostname R1
+line con 0
+pass cisco
+login
+enable secret cisco
+line vty 0 15
+pass cisco
+login
+service password-encryption
+banner motd #Vedett halozat!#
+int g0/0
+ip add 192.168.0.1 255.255.255.0
+no sh
